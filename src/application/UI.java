@@ -1,10 +1,13 @@
 package application;
 
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
 
-public class UI {
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
+public class UI {
     /*
     Instanciando as cores das peças, e tudo que for necessario pro tabuleiro
     font dos codigos de cores -> https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
@@ -27,6 +30,19 @@ public class UI {
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    //MÉTODO FUNÇÃO QUE LE DO USUÁRIO UMA POSIÇÃO
+    public static ChessPosition readChessPosition(Scanner sc) {
+        try {
+            String s = sc.nextLine();                            //de a-h + 1-8 (ex: a1)
+            char column = s.charAt(0);                          //pegando apenas o valor da posição 0 do string s
+            int row = Integer.parseInt(s.substring(1));        // recortar o string s a partir da posição 1 e converter o resultado para inteiro
+            return new ChessPosition(column, row);
+        }
+        catch (RuntimeException e) {
+            throw new InputMismatchException("Error reading ChessPosition. Valid values are from a1 to h8.");
+        }
+    }
 
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i=0; i<pieces.length; i++) {

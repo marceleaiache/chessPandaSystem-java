@@ -61,6 +61,21 @@ public class Board {
         piece.position = position;
     }
 
+    //MÉTODO FUNÇÃO QUE REMOVE A PEÇA
+    public Piece removePiece(Position position) {
+        //PROGRAMAÇÃO DENFENSIVA
+        if (!positionExists(position)) {
+            throw new BoardException("Position not on the board");
+        }
+        if (piece(position) == null) {
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return aux;
+    }
+
     //MÉTODO AUXILIAR DO METODO POSITIONEXISTS
     private boolean positionExists(int row, int column) {
         return row >= 0 && row < rows && column >= 0 && column < columns;
@@ -71,7 +86,7 @@ public class Board {
         return positionExists(position.getRow(), position.getColumn());
     }
 
-    //MÉTODO FUNÇÃ QUE VERIFICA SE NA POSIÇÃO REFERIDA EXISTE OU NAO UMA PEÇA
+    //MÉTODO FUNÇÃO QUE VERIFICA SE NA POSIÇÃO REFERIDA EXISTE OU NAO UMA PEÇA
     public boolean thereIsAPiece(Position position) {
         //PROGRAMAÇÃO DEFENSIVA
         if(!positionExists(position)) {
