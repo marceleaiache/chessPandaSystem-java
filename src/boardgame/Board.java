@@ -41,4 +41,11 @@ public class Board {
     public Piece piece(Position position) {
         return pieces[position.getRow()][position.getColumn()];
     }
+
+    //MÉTODO FUNÇÃO PLACEPIECE RESPONSÁVEL POR PEGAR UMA PEÇA NUMA POSIÇÃO E COLOCA-LA NO TABULEIRO
+    public void placePiece(Piece piece, Position position) {
+        //PEGAR A MTRIZ NA POSIÇÃO DADA E ATRIBUIR A PELA QUE EU INFORMI
+        pieces[position.getRow()][position.getColumn()] = piece;
+        piece.position = position;
+    }
 }
