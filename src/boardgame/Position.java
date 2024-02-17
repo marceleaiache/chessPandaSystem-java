@@ -7,9 +7,9 @@ public class Position {
     private int column;
 
     //MÉTODO CONSTRUTOR COM ARGUMENTO
-    public Position(int row, int columns) {
+    public Position(int row, int column) {
         this.row = row;
-        this.column = columns;
+        this.column = column;
     }
 
     //MÉTODOS GETTERS AND SETTERS
@@ -25,13 +25,14 @@ public class Position {
         return column;
     }
 
-    public void setColumns(int column) {
+    public void setColumn(int column) {
         this.column = column;
     }
 
     //MÉTODO FUNÇÃO
     public void setValues(int row, int column) {
-
+        this.row = row;
+        this.column = column;
     }
 
     @Override
