@@ -21,8 +21,8 @@ public class Program {
                 //FUNÇÃO PARA LIMPAR A TELA IMPLEMENTADA NO UI
                 UI.clearScreen();
 
-                //FUNÇÃO PARA IMPRIMIR AS PEÇAS DE UMA PARTIDA
-                UI.printBoard(chessMatch.getPieces());
+                //FUNÇÃO PARA IMPRIMIR UMA PARTIDA
+                UI.printMatch(chessMatch);
 
                 System.out.println();
                 System.out.print("Source: ");

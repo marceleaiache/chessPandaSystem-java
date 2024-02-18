@@ -8,14 +8,27 @@ import chess.pieces.Rook;
 
 public class ChessMatch {
 
-    //DECLARAÇÃO DE UM OBJETO BOARD;
+    //DECLARAÇÃO DE ARGUMENTOS DA CLASSE
+    private int turn;
+    private Color currentPlayer;
     private Board board;
 
     public ChessMatch(){
         //INSTANCIANDO UM OBJETO BOARD
         board = new Board(8, 8);
+        turn = 1;
+        currentPlayer = Color.WHITE;
         //INSTANCIANDO UM INICIO DE PARTIDA
         initialSetup();
+    }
+
+    //MÉTODO GET
+    public int getTurn() {
+        return turn;
+    }
+
+    public Color getCurrentPlayer() {
+        return currentPlayer;
     }
 
     //MÉTODO FUNÇÃO QUE RETORNA UMA MATRIZ DE PEÇAS DE XADREZ CORRESPONDENTE A UMA PARTIDA
@@ -44,6 +57,7 @@ public class ChessMatch {
         validateSourcePosition(source);
         validateTargetPosition(source, target);
         Piece capturedPiece = makeMove(source, target);
+        nextTurn();
         return (ChessPiece)capturedPiece;
 
     }
@@ -56,13 +70,20 @@ public class ChessMatch {
         return caputuredPiece;
     }
 
-    //MÉTODO FUNÇÃO DE VALIDAÇÃO SE HÁ PEÇA NA POSIÇÃO DE ORIGEM
+    //MÉTODO FUNÇÃO DE VALIDAÇÃO DE MOVIMENTAÇÃO DA PEÇA
     public void validateSourcePosition(Position position) {
-        if(!board.thereIsAPiece(position)){
+        //SE NÃO HÁ PEÇA NO LUGAR DE ORIGEM ESCOLHIDO HÁ UMA EXCEÇÃO
+        if (!board.thereIsAPiece(position)){
             throw new ChessException("There is no piece on source position");
         }
+
+        //SE A PEÇA ESCOLHIDA NÃO É A PEÇA DO JOGADOR HÁ UMA EXCEÇÃO
+        if (currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
+            throw new ChessException("The chosen piece is not yours");
+        }
+
         //SE NAO TIVER NENHUM MOVIMENTO POSSIVEL HÁ UMA EXCEÇÃO
-        if(!board.piece(position).isThereAnyPossibleMove()) {
+        if (!board.piece(position).isThereAnyPossibleMove()) {
             throw new ChessException("There is no possible moves for the chosen piece");
         }
     }
@@ -72,6 +93,12 @@ public class ChessMatch {
         if (!board.piece(source).possibleMove(target)) {
             throw new ChessException("The chosen piece can't move to target position");
         }
+    }
+
+    //MÉTODO FUNÇÃO QUE TROCA O TURNO
+    private void nextTurn() {
+        turn ++;
+        currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
 
     //MÉTODO FUNÇÃO QUE RECEBE AS COORDENADAS DO XADREZ
