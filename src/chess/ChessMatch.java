@@ -6,12 +6,18 @@ import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChessMatch {
 
     //DECLARAÇÃO DE ARGUMENTOS DA CLASSE
     private int turn;
     private Color currentPlayer;
     private Board board;
+
+    private List<Piece> piecesOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
 
     public ChessMatch(){
         //INSTANCIANDO UM OBJETO BOARD
@@ -67,6 +73,12 @@ public class ChessMatch {
         Piece p = board.removePiece(source);                    //retirada da peça na posição de origem
         Piece caputuredPiece = board.removePiece(target);       //remove a POSSIVEL peça que está na posição de destino
         board.placePiece(p, target);
+
+        if (caputuredPiece != null) {
+            piecesOnTheBoard.remove(caputuredPiece);
+            capturedPieces.add(caputuredPiece);
+        }
+
         return caputuredPiece;
     }
 
@@ -104,6 +116,7 @@ public class ChessMatch {
     //MÉTODO FUNÇÃO QUE RECEBE AS COORDENADAS DO XADREZ
     private void placeNewPiece(char column, int row, ChessPiece piece) {
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
+        piecesOnTheBoard.add(piece);
     }
 
     //MÉTODO RESPONSÁVEL POR INICIAR A PARTIDA DE XADREZ, COLOCANDO AS PEÇAS NO TABULEIRO
