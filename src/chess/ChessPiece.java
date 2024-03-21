@@ -8,6 +8,7 @@ public abstract class ChessPiece extends Piece {
 
     //ARGUMENTO DA CLASSE
     private Color color;
+    private int moveCount;
 
     //MÉTODO CONSTRUTOR
     public ChessPiece(Board board, Color color) {
@@ -18,6 +19,20 @@ public abstract class ChessPiece extends Piece {
     //MÉTODO GET
     public Color getColor() {
         return color;
+    }
+
+    public int getMoveCount() {
+        return moveCount;
+    }
+
+    //MÉTODO FUNÇÃO DE INCREMENTO
+    public void increaseMoveCount() {
+        moveCount++;
+    }
+
+    //MÉTODO FUNÇÃO DE DECREMENTO
+    public void decreaseMoveCount() {
+        moveCount--;
     }
 
     public ChessPosition getChessPosition() {
