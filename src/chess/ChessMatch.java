@@ -96,11 +96,7 @@ public class ChessMatch {
 
     //MÉTODO FUNÇÃO QUE MOVIMENTA A PEÇA NO TABULEIRO
     private Piece makeMove(Position source, Position target) {
-<<<<<<< HEAD
         ChessPiece p = (ChessPiece)board.removePiece(source);                    //retirada da peça na posição de origem
-=======
-        ChessPiece p = (ChessPiece)board.removePiece(source);    //retirada da peça na posição de origem
->>>>>>> 88de80a5de460435e014141999f228f91bc112ec
         p.increaseMoveCount();
         Piece caputuredPiece = board.removePiece(target);       //remove a POSSIVEL peça que está na posição de destino
         board.placePiece(p, target);

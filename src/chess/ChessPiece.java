@@ -39,18 +39,6 @@ public abstract class ChessPiece extends Piece {
         return ChessPosition.fromPosition(position);
     }
 
-
-
-    //MÉTODO FUNÇÃO DE INCREMENTO
-    public void increaseMoveCount() {
-        moveCount++;
-    }
-
-    //MÉTODO FUNÇÃO DE DECREMENTO
-    public void decreaseMoveCount() {
-        moveCount--;
-    }
-
     //OPERAÇÃO
     protected boolean isThereOpponentPiece(Position position) {
         ChessPiece p = (ChessPiece)getBoard().piece(position);
