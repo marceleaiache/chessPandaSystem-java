@@ -5,16 +5,16 @@ import boardgame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
-public class King extends ChessPiece {
+public class Knight extends ChessPiece {
     //MÉTODO CONSTRUTOR (repassando os dados da classe para a super classe)
-    public King(Board board, Color color) {
+    public Knight(Board board, Color color) {
         super(board, color);
     }
 
     //MÉTODO TOSTRING
     @Override
     public String toString() {
-        return "K";
+        return "N";
     }
 
     //MÉTODO AUXILIAR
@@ -29,50 +29,50 @@ public class King extends ChessPiece {
 
         Position p = new Position(0, 0);
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS ACIMA
-        p.setValues(position.getRow() - 1, position.getColumn());
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() - 1, position.getColumn() - 2);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS ABAIXO
-        p.setValues(position.getRow() + 1, position.getColumn());
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() - 2, position.getColumn() - 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS ESQUERDA
-        p.setValues(position.getRow(), position.getColumn() - 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() - 2, position.getColumn() + 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS DIREITA
-        p.setValues(position.getRow(), position.getColumn() + 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() - 1, position.getColumn() + 2);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS NOROESTE
-        p.setValues(position.getRow() - 1, position.getColumn() - 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() + 1, position.getColumn() + 2);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS NORDESTE
-        p.setValues(position.getRow() - 1, position.getColumn() + 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() + 2, position.getColumn() + 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS SUDOESTE
-        p.setValues(position.getRow() + 1, position.getColumn() - 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() + 2, position.getColumn() - 1);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS SUDESTE
-        p.setValues(position.getRow() + 1, position.getColumn() + 1);
+        //MÉTODO FUNÇÃO POSSÍVEIS MOVIMENTOS
+        p.setValues(position.getRow() + 1, position.getColumn() - 2);
         if (getBoard().positionExists(p) && canMove(p)) {
             mat[p.getRow()][p.getColumn()] = true;
         }
